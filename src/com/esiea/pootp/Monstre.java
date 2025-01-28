@@ -1,3 +1,5 @@
+package com.esiea.pootp;
+
 import java.util.ArrayList;
 
 public class Monstre {
@@ -23,6 +25,34 @@ public class Monstre {
         this.tourDansEtat = 0;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setPointsDeVie(int pointsDeVie) {
+        this.pointsDeVie = pointsDeVie;
+    }
+
+    public void setVitesse(int vitesse) {
+        this.vitesse = vitesse;
+    }
+
+    public void setAttaque(int attaque) {
+        this.attaque = attaque;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
+    }
+
     // Ajouter une attaque à la liste
     public void ajouterAttaque(Attaque attaque) {
         if (capacites.size() < 4) {
@@ -30,6 +60,14 @@ public class Monstre {
         } else {
             System.out.println("Ce monstre ne peut avoir que 4 attaques !");
         }
+    }
+
+    public int getPointsDeVie() {
+        return pointsDeVie;
+    }
+
+    public ArrayList<Attaque> getCapacites() {
+        return capacites;
     }
 
     // Méthode pour attaquer un autre monstre
@@ -49,10 +87,12 @@ public class Monstre {
         System.out.println(nom + " inflige " + degats + " dégâts à " + cible.nom);
     }
 
-    // Calcul des dégâts (simplifié pour cette étape)
     private int calculerDegats(Attaque attaque, Monstre cible) {
-        return (int) ((attaque.getPuissance() * this.attaque / cible.defense) * 1.5); // Simplification
+        double avantage = calculerAvantage(attaque.getType(), cible.type);
+        double coeff = 0.85 + (Math.random() * 0.15); // Coeff aléatoire entre 0.85 et 1
+        return (int) ((((double) (attaque.getPuissance() * this.attaque) / cible.defense) + 2) * avantage * coeff);
     }
+
 
     // Méthode pour prendre des dégâts
     public void prendreDegats(int degats) {
@@ -93,6 +133,25 @@ public class Monstre {
         this.tourDansEtat = 0;
     }
 
+    private double calculerAvantage(String typeAttaque, String typeCible) {
+        if ((typeAttaque.equals("Feu") && typeCible.equals("Eau")) ||
+                (typeAttaque.equals("Eau") && typeCible.equals("Foudre")) ||
+                (typeAttaque.equals("Foudre") && typeCible.equals("Terre")) ||
+                (typeAttaque.equals("Terre") && typeCible.equals("Nature")) ||
+                (typeAttaque.equals("Nature") && typeCible.equals("Feu"))) {
+            return 0.5; // Faible contre
+        }
+        if ((typeAttaque.equals("Eau") && typeCible.equals("Feu")) ||
+                (typeAttaque.equals("Foudre") && typeCible.equals("Eau")) ||
+                (typeAttaque.equals("Terre") && typeCible.equals("Foudre")) ||
+                (typeAttaque.equals("Nature") && typeCible.equals("Terre")) ||
+                (typeAttaque.equals("Feu") && typeCible.equals("Nature"))) {
+            return 2.0; // Fort contre
+        }
+        return 1.0; // Pas d'avantage
+    }
+
+
     // Afficher les informations du monstre
     @Override
     public String toString() {
@@ -106,4 +165,5 @@ public class Monstre {
                 ", etat='" + etat + '\'' +
                 '}';
     }
+
 }

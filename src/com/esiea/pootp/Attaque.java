@@ -1,3 +1,5 @@
+package com.esiea.pootp;
+
 import java.util.Random;
 
 public class Attaque {
@@ -13,6 +15,26 @@ public class Attaque {
         this.puissance = puissance;
         this.nbUtilisations = nbUtilisations;
         this.probabiliteEchec = probabiliteEchec;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setPuissance(int puissance) {
+        this.puissance = puissance;
+    }
+
+    public void setNbUtilisations(int nbUtilisations) {
+        this.nbUtilisations = nbUtilisations;
+    }
+
+    public void setProbabiliteEchec(double probabiliteEchec) {
+        this.probabiliteEchec = probabiliteEchec;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public boolean isRate() {
