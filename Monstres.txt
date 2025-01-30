@@ -1,0 +1,49 @@
+Monster
+    Name Pikachu
+    Type Electric
+    HP 110 141
+    Speed 110 141
+    Attack 75 106
+    Defense 50 82
+    Paralysis 0.2
+EndMonster
+
+Monster
+Name Cerapuca
+Type Water
+HP 119 150
+Attack 68 99
+Speed 63 94
+Defense 85 116
+Flood 0.25
+Fall 0.35
+EndMonster
+
+Monster
+Name Charizard
+Type Fire
+HP 150 180
+Speed 100 130
+Attack 120 150
+Defense 80 110
+Burn 0.3
+EndMonster
+Monster
+    Name Bulbasaur
+    Type Grass
+    HP 90 120
+    Speed 70 100
+    Attack 60 90
+    Defense 70 100
+    Poison 0.2
+EndMonster
+
+Monster
+    Name Squirtle
+    Type Water
+    HP 100 130
+    Speed 60 90
+    Attack 50 80
+    Defense 90 120
+    Drown 0.25
+EndMonster

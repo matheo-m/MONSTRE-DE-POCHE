@@ -1,0 +1,215 @@
+Attack
+Name Eclair
+Type Electric
+Power 40
+NbUse 10
+Fail 0.07
+EndAttack
+
+Attack
+Name Charge
+Type Normal
+Power 35
+NbUse 15
+Fail 0.03
+EndAttack
+
+Attack
+Name Thunderbolt
+Type Electric
+Power 90
+NbUse 15
+Fail 0.1
+EndAttack
+
+Attack
+Name Quick_Attack
+Type Normal
+Power 40
+NbUse 30
+Fail 0.05
+EndAttack
+
+Attack
+Name Iron_Tail
+Type Steel
+Power 100
+NbUse 15
+Fail 0.25
+EndAttack
+
+Attack
+Name Flamethrower
+Type Fire
+Power 90
+NbUse 15
+Fail 0.1
+EndAttack
+
+Attack
+Name Surf
+Type Water
+Power 90
+NbUse 15
+Fail 0.1
+EndAttack
+
+Attack
+Name Ice_Beam
+Type Ice
+Power 90
+NbUse 10
+Fail 0.1
+EndAttack
+
+Attack
+Name Solar_Beam
+Type Grass
+Power 120
+NbUse 10
+Fail 0.5
+EndAttack
+
+Attack
+Name Earthquake
+Type Ground
+Power 100
+NbUse 10
+Fail 0.1
+EndAttack
+
+Attack
+Name Psychic
+Type Psychic
+Power 90
+NbUse 10
+Fail 0.1
+EndAttack
+
+Attack
+Name Shadow_Ball
+Type Ghost
+Power 80
+NbUse 15
+Fail 0.1
+EndAttack
+
+Attack
+Name Thunder
+Type Electric
+Power 110
+NbUse 10
+Fail 0.3
+EndAttack
+
+Attack
+Name Hydro_Pump
+Type Water
+Power 110
+NbUse 5
+Fail 0.2
+EndAttack
+
+Attack
+Name Fire_Blast
+Type Fire
+Power 110
+NbUse 5
+Fail 0.15
+EndAttack
+
+Attack
+Name Blizzard
+Type Ice
+Power 110
+NbUse 5
+Fail 0.2
+EndAttack
+
+Attack
+Name Dragon_Claw
+Type Dragon
+Power 80
+NbUse 15
+Fail 0.1
+EndAttack
+
+Attack
+Name Shadow_Claw
+Type Ghost
+Power 70
+NbUse 15
+Fail 0.1
+EndAttack
+
+Attack
+Name Rock_Slide
+Type Rock
+Power 75
+NbUse 10
+Fail 0.1
+EndAttack
+
+Attack
+Name Brick_Break
+Type Fighting
+Power 75
+NbUse 15
+Fail 0.05
+EndAttack
+
+Attack
+Name X_Scissor
+Type Bug
+Power 80
+NbUse 15
+Fail 0.1
+EndAttack
+
+Attack
+Name Air_Slash
+Type Flying
+Power 75
+NbUse 15
+Fail 0.1
+EndAttack
+
+Attack
+Name Energy_Ball
+Type Grass
+Power 90
+NbUse 10
+Fail 0.1
+EndAttack
+
+Attack
+Name Poison_Jab
+Type Poison
+Power 80
+NbUse 20
+Fail 0.1
+EndAttack
+
+Attack
+Name Iron_Head
+Type Steel
+Power 80
+NbUse 15
+Fail 0.1
+EndAttack
+
+Attack
+Name Stone_Edge
+Type Rock
+Power 100
+NbUse 5
+Fail 0.2
+EndAttack
+
+Attack
+Name Focus_Blast
+Type Fighting
+Power 120
+NbUse 5
+Fail 0.3
+EndAttack

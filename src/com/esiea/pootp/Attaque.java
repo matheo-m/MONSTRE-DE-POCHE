@@ -33,6 +33,10 @@ public class Attaque {
         this.probabiliteEchec = probabiliteEchec;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
     public void setNom(String nom) {
         this.nom = nom;
     }

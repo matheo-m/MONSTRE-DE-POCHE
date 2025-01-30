@@ -12,6 +12,11 @@ public class Monstre {
     private String etat;
     private ArrayList<Attaque> capacites;
     private int tourDansEtat;
+    private double probabiliteParalysie;
+    private double probabiliteEmpoisonnement;
+    private double probabiliteBrulure;
+    private double probabiliteInondation;
+    private double probabiliteChute;
 
     public Monstre(String nom, String type, int pointsDeVie, int attaque, int defense, int vitesse) {
         this.nom = nom;
@@ -23,6 +28,13 @@ public class Monstre {
         this.etat = "Normal"; // Par défaut, pas d'état négatif.
         this.capacites = new ArrayList<>();
         this.tourDansEtat = 0;
+
+        this.probabiliteParalysie = 0.0;
+        this.probabiliteEmpoisonnement = 0.0;
+        this.probabiliteBrulure = 0.0;
+        this.probabiliteInondation = 0.0;
+        this.probabiliteChute = 0.0;
+
     }
 
     public String getNom() {
@@ -37,8 +49,16 @@ public class Monstre {
         this.type = type;
     }
 
+    public String getType() {
+        return type;
+    }
+
     public void setPointsDeVie(int pointsDeVie) {
         this.pointsDeVie = pointsDeVie;
+    }
+
+    public int getVitesse() {
+        return vitesse;
     }
 
     public void setVitesse(int vitesse) {
@@ -92,7 +112,6 @@ public class Monstre {
         double coeff = 0.85 + (Math.random() * 0.15); // Coeff aléatoire entre 0.85 et 1
         return (int) ((((double) (attaque.getPuissance() * this.attaque) / cible.defense) + 2) * avantage * coeff);
     }
-
 
     // Méthode pour prendre des dégâts
     public void prendreDegats(int degats) {
@@ -151,11 +170,9 @@ public class Monstre {
         return 1.0; // Pas d'avantage
     }
 
-
-    // Afficher les informations du monstre
     @Override
     public String toString() {
-        return "Monstre{" +
+        return "- Monstre{" +
                 "nom='" + nom + '\'' +
                 ", type='" + type + '\'' +
                 ", pointsDeVie=" + pointsDeVie +
@@ -164,6 +181,26 @@ public class Monstre {
                 ", vitesse=" + vitesse +
                 ", etat='" + etat + '\'' +
                 '}';
+    }
+
+    public void setProbabiliteParalysie(double double1) {
+        this.probabiliteParalysie = double1;
+    }
+
+    public void setProbabiliteEmpoisonnement(double double1) {
+        this.probabiliteEmpoisonnement = double1;
+    }
+
+    public void setProbabiliteBrulure(double double1) {
+        this.probabiliteBrulure = double1;
+    }
+
+    public void setProbabiliteInondation(double double1) {
+        this.probabiliteInondation = double1;
+    }
+
+    public void setProbabiliteChute(double double1) {
+        this.probabiliteChute = double1;
     }
 
 }

@@ -43,6 +43,21 @@ public class ChargeurFichier {
                         case "Defense":
                             monstreTemporaire.setDefense(Integer.parseInt(champs[1]));
                             break;
+                        case "Paralysis":
+                            monstreTemporaire.setProbabiliteParalysie(Double.parseDouble(champs[1]));
+                            break;
+                        case "Burn":
+                            monstreTemporaire.setProbabiliteBrulure(Double.parseDouble(champs[1]));
+                            break;
+                        case "Poison":
+                            monstreTemporaire.setProbabiliteEmpoisonnement(Double.parseDouble(champs[1]));
+                            break;
+                        case "Flood":
+                            monstreTemporaire.setProbabiliteInondation(Double.parseDouble(champs[1]));
+                            break;
+                        case "Fall":
+                            monstreTemporaire.setProbabiliteChute(Double.parseDouble(champs[1]));
+                            break;
                     }
                 }
             }
