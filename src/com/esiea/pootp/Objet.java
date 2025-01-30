@@ -20,4 +20,13 @@ public class Objet {
             System.out.println(cible.getNom() + " est guéri de son état !");
         }
     }
+
+    @Override
+    public String toString() {
+        return "Objet{" +
+                "nom='" + nom + '\'' +
+                ", type='" + type + '\'' +
+                ", effet=" + effet +
+                '}';
+    }
 }
