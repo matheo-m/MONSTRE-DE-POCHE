@@ -105,6 +105,37 @@ public class Monstre {
         int degats = calculerDegats(attaque, cible);
         cible.prendreDegats(degats);
         System.out.println(nom + " inflige " + degats + " dégâts à " + cible.nom);
+
+        if (this.type.equals("Foudre")) {
+            double chance = Math.random();
+            if (chance < this.probabiliteParalysie) {
+            cible.changerEtat("Paralysé");
+            System.out.println(cible.nom + " est paralysé !");
+            }
+        }
+
+        if (this.type.equals("Eau")) {
+            double chance = Math.random();
+            if (chance < this.probabiliteInondation) {
+                cible.changerEtat("Inondé");
+                System.out.println(cible.nom + " a inondé le terrain !");
+            }
+        }
+
+        if (cible.etat.equals("Inondé") && !cible.type.equals("Eau")) {
+            double chance = Math.random();
+            if (chance < this.probabiliteChute) {
+                cible.prendreDegats(cible.attaque / 4);
+                System.out.println(cible.nom + " a glissé et subit " + (cible.attaque / 4) + " dégâts !");
+            }
+        }
+
+        if (this.type.equals("Terre") && attaque.getType().equals("Terre")) {
+            int toursCache = (int) (Math.random() * 3) + 1; // Nombre aléatoire entre 1 et 3
+            this.defense *= 2; // Double la défense
+            System.out.println(nom + " se cache sous terre pour " + toursCache + " tours, doublant sa défense !");
+            
+        }
     }
 
     private int calculerDegats(Attaque attaque, Monstre cible) {
