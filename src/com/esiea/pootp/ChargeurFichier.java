@@ -29,7 +29,30 @@ public class ChargeurFichier {
                             monstreTemporaire.setNom(champs[1]);
                             break;
                         case "Type":
-                            monstreTemporaire.setType(champs[1]);
+
+                            switch (champs[1]) {
+                                case "Electric":
+                                    monstreTemporaire.setType("Foudre");
+                                    break;
+                                case "Water":
+                                    monstreTemporaire.setType("Eau");
+                                    break;
+                                case "Ground":
+                                    monstreTemporaire.setType("Terre");
+                                    break;
+                                case "Fire":
+                                    monstreTemporaire.setType("Feu");
+                                    break;
+                                case "Grass":
+                                    monstreTemporaire.setType("Plante");
+                                    break;
+                                case "Bug":
+                                    monstreTemporaire.setType("Insecte");
+                                    break;
+                                default:
+                                    monstreTemporaire.setType(champs[1]);
+                                    break;
+                            }
                             break;
                         case "HP":
                             monstreTemporaire.setPointsDeVie(Integer.parseInt(champs[1]));
@@ -91,8 +114,31 @@ public class ChargeurFichier {
                         case "Name":
                             attaqueTemporaire.setNom(champs[1]);
                             break;
-                        case "Type":
-                            attaqueTemporaire.setType(champs[1]);
+                            case "Type":
+
+                            switch (champs[1]) {
+                                case "Electric":
+                                    attaqueTemporaire.setType("Foudre");
+                                    break;
+                                case "Water":
+                                    attaqueTemporaire.setType("Eau");
+                                    break;
+                                case "Ground":
+                                    attaqueTemporaire.setType("Terre");
+                                    break;
+                                case "Fire":
+                                    attaqueTemporaire.setType("Feu");
+                                    break;
+                                case "Grass":
+                                    attaqueTemporaire.setType("Plante");
+                                    break;
+                                case "Bug":
+                                    attaqueTemporaire.setType("Insecte");
+                                    break;
+                                default:
+                                    attaqueTemporaire.setType(champs[1]);
+                                    break;
+                            }
                             break;
                         case "Power":
                             attaqueTemporaire.setPuissance(Integer.parseInt(champs[1]));
@@ -113,15 +159,4 @@ public class ChargeurFichier {
         return attaques;
     }
 
-    public static Monstre choisirMonstre(List<Monstre> monstres) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Choisissez un monstre :");
-        for (int i = 0; i < monstres.size(); i++) {
-            System.out.println((i + 1) + ". " + monstres.get(i).getNom());
-        }
-        int choix = scanner.nextInt() - 1;
-        return monstres.get(choix);
-    }
-
 }
-

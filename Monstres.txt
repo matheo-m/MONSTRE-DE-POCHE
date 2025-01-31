@@ -47,3 +47,13 @@ Monster
     Defense 90 120
     Drown 0.25
 EndMonster
+
+Monster
+    Name Sandshrew
+    Type Ground
+    HP 100 130
+    Speed 40 70
+    Attack 75 105
+    Defense 85 115
+    Sandstorm 0.3
+EndMonster

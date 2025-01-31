@@ -23,8 +23,13 @@ public class Combat {
         while (monstreJoueur1.getPointsDeVie() > 0 && monstreJoueur2.getPointsDeVie() > 0) {
 
             System.out.println("\n-------------Tour de combat :-------------\n");
-            System.out.println("Joueur 1: " + joueur1.toString());
-            System.out.println("Joueur 2: " + joueur2.toString());
+            System.out.println(
+                    "Joueur 1 : " + monstreJoueur1.getNom() + " (PV: " + monstreJoueur1.getPointsDeVie() + ", Type: "
+                    + monstreJoueur1.getType() + ")");
+            System.out.println(
+                    "Joueur 2 : " + monstreJoueur2.getNom() + " (PV: " + monstreJoueur2.getPointsDeVie() + ", Type: "
+                    + monstreJoueur2.getType() + ")");
+            System.out.println();
 
             System.out.println("Joueur 1, choisissez une action :");
             System.out.println("1. Attaquer");
@@ -56,37 +61,40 @@ public class Combat {
 
             // Attaques
             if (actionJoueur1 == 1 && actionJoueur2 == 1) {
-                // if (monstreJoueur1.getVitesse() >= monstreJoueur2.getVitesse()) {
-                //     monstreJoueur1.attaquer(monstreJoueur2);
-                //     if (monstreJoueur2.getPointsDeVie() > 0) {
-                //         monstreJoueur2.attaquer(monstreJoueur1);
-                //     }
-                // } else {
-                //     monstreJoueur2.attaquer(monstreJoueur1);
-                //     if (monstreJoueur1.getPointsDeVie() > 0) {
-                //         monstreJoueur1.attaquer(monstreJoueur2);
-                //     }
-                // }
-                System.out.println("Attaque simultanée non implémentée !");
+                Attaque attaqueJoueur1 = choisirAttaque(joueur1,monstreJoueur1);
+                Attaque attaqueJoueur2 = choisirAttaque(joueur2,monstreJoueur2);
+                if (monstreJoueur1.getVitesse() >= monstreJoueur2.getVitesse()) {
+                    monstreJoueur1.attaquer(monstreJoueur1, monstreJoueur2, attaqueJoueur1);
+                    if (monstreJoueur2.getPointsDeVie() > 0) {
+                        monstreJoueur2.attaquer(monstreJoueur2, monstreJoueur1, attaqueJoueur2);
+                    }
+                } else {
+                    monstreJoueur2.attaquer(monstreJoueur2, monstreJoueur1, attaqueJoueur2);
+                    if (monstreJoueur1.getPointsDeVie() > 0) {
+                        monstreJoueur1.attaquer(monstreJoueur1, monstreJoueur2, attaqueJoueur1);
+                    }
+                }
             } else if (actionJoueur1 == 1) {
-                // monstreJoueur1.attaquer(monstreJoueur2);
-                System.out.println("Attaque joueur 1 non implémentée !");
+                monstreJoueur1.attaquer(monstreJoueur1, monstreJoueur2, choisirAttaque(joueur1,monstreJoueur1));
             } else if (actionJoueur2 == 1) {
-                // monstreJoueur2.attaquer(monstreJoueur1);
-                System.out.println("Attaque joueur 2 non implémentée !");
+                monstreJoueur2.attaquer(monstreJoueur2, monstreJoueur1, choisirAttaque(joueur2,monstreJoueur2));
             }
 
             // Vérification des points de vie
             if (monstreJoueur1.getPointsDeVie() <= 0) {
                 System.out.println(monstreJoueur1.getNom() + " est KO !");
-                if (!joueur1.hasMonstresEnVie()) { // si aucun monstre n'est en vie
+                if (joueur1.hasMonstresEnVie()) {
+                    monstreJoueur1 = changerMonstre(joueur1);
+                } else {
                     System.out.println("Joueur 2 a gagné !");
                     break;
                 }
             }
             if (monstreJoueur2.getPointsDeVie() <= 0) {
                 System.out.println(monstreJoueur2.getNom() + " est KO !");
-                if (!joueur2.hasMonstresEnVie()) { // si aucun monstre n'est en vie
+                if (joueur2.hasMonstresEnVie()) {
+                    monstreJoueur2 = changerMonstre(joueur2);
+                } else {
                     System.out.println("Joueur 1 a gagné !");
                     break;
                 }
@@ -103,7 +111,7 @@ public class Combat {
 
         System.out.println("Choisissez un objet :");
         for (int i = 0; i < inventaire.size(); i++) {
-            System.out.println((i + 1) + ". " + inventaire.get(i).toString());
+            System.out.println((i + 1) + ". " + inventaire.get(i).getNom() + " ( +" + inventaire.get(i).getEffet() + " PV)");
         }
 
         Scanner scanner = new Scanner(System.in);
@@ -121,11 +129,12 @@ public class Combat {
     private Monstre changerMonstre(Joueur joueur) {
 
         List<Monstre> monstres = joueur.getMonstres();
-        
-        System.out.println("Choisissez un monstre :");
+
+        System.out.println(joueur.getNom() + " choisissez un monstre :");
         for (int i = 0; i < monstres.size(); i++) {
             System.out.println(
-                    (i + 1) + ". " + monstres.get(i).getNom() + " (PV: " + monstres.get(i).getPointsDeVie() + ")");
+                    (i + 1) + ". " + monstres.get(i).getNom() + " (PV: " + monstres.get(i).getPointsDeVie() + ", Type: "
+                            + monstres.get(i).getType() + ")");
         }
 
         Scanner scanner = new Scanner(System.in);
@@ -139,5 +148,23 @@ public class Combat {
         }
     }
 
+    private Attaque choisirAttaque(Joueur joueur, Monstre monstre) {
+        List<Attaque> capacites = monstre.getCapacites();
+
+        System.out.println(joueur.getNom() + " choisissez une attaque pour " + monstre.getNom() + " :");
+        for (int i = 0; i < capacites.size(); i++) {
+            System.out.println((i + 1) + ". " + capacites.get(i).getNom() + " (" + capacites.get(i).getType() + ")");
+        }
+
+        Scanner scanner = new Scanner(System.in);
+        int choix = scanner.nextInt() - 1;
+
+        if (choix >= 0 && choix < capacites.size()) {
+            return capacites.get(choix);
+        } else {
+            System.out.println("Choix invalide !");
+            return choisirAttaque(joueur, monstre);
+        }
+    }
 
 }

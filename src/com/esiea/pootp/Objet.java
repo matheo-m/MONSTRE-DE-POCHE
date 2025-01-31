@@ -29,4 +29,16 @@ public class Objet {
                 ", effet=" + effet +
                 '}';
     }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public int getEffet() {
+        return effet;
+    }
 }
