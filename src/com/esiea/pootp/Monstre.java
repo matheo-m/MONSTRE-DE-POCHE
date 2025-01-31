@@ -1,6 +1,7 @@
 package com.esiea.pootp;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Monstre {
     private String nom;
@@ -91,7 +92,7 @@ public class Monstre {
     }
 
     // Méthode pour attaquer un autre monstre
-    public void attaquer(Monstre cible, Attaque attaque) {
+    public void attaquer(Monstre lanceur, Monstre cible, Attaque attaque) {
         if (!capacites.contains(attaque)) {
             System.out.println("Cette attaque n'appartient pas à ce monstre !");
             return;
@@ -106,6 +107,7 @@ public class Monstre {
         cible.prendreDegats(degats);
         System.out.println(nom + " inflige " + degats + " dégâts à " + cible.nom);
 
+        // Monstre de type Foudre
         if (this.type.equals("Foudre")) {
             double chance = Math.random();
             if (chance < this.probabiliteParalysie) {
@@ -114,14 +116,14 @@ public class Monstre {
             }
         }
 
+        // Monstre de type Eau
         if (this.type.equals("Eau")) {
             double chance = Math.random();
             if (chance < this.probabiliteInondation) {
                 cible.changerEtat("Inondé");
-                System.out.println(cible.nom + " a inondé le terrain !");
+                System.out.println(lanceur.nom + " a inondé le terrain !");
             }
         }
-
         if (cible.etat.equals("Inondé") && !cible.type.equals("Eau")) {
             double chance = Math.random();
             if (chance < this.probabiliteChute) {
@@ -130,12 +132,56 @@ public class Monstre {
             }
         }
 
+        // Monstre de type Terre
         if (this.type.equals("Terre") && attaque.getType().equals("Terre")) {
             int toursCache = (int) (Math.random() * 3) + 1; // Nombre aléatoire entre 1 et 3
             this.defense *= 2; // Double la défense
             System.out.println(nom + " se cache sous terre pour " + toursCache + " tours, doublant sa défense !");
+
             
         }
+
+        // Monstre de type Feu
+        if (this.type.equals("Feu") && attaque.getType().equals("Feu")) {
+            double chance = Math.random();
+            if (chance < this.probabiliteBrulure) {
+            cible.changerEtat("Brûlé");
+            System.out.println(cible.nom + " est brûlé !");
+            }
+        }
+        if (cible.etat.equals("Brûlé") && cible.type.equals("Eau")) {
+            cible.retirerEtat();
+            System.out.println(cible.nom + " est soigné de sa brûlure grâce au terrain inondé !");
+        }
+
+        // Monstre de type Nature
+        if (this.type.equals("Plante") || this.type.equals("Insecte")) {
+            // Soin si terrain inondé
+            if (cible.etat.equals("Inondé")) {
+                int soin = this.pointsDeVie / 20;
+                this.pointsDeVie += soin;
+                System.out.println(nom + " récupère " + soin + " points de vie grâce au terrain inondé !");
+            }
+        }
+
+        // Monstre de type Plante
+        if (this.type.equals("Plante")) {
+            double chance = Math.random();
+            if (chance < 0.3) { // 30% de chance de se soigner
+            this.retirerEtat();
+            System.out.println(nom + " se soigne et retire ses altérations d'état !");
+            }
+        }
+
+        // Monstre de type Insecte
+        if (this.type.equals("Insecte") && attaque.getType().equals("Insecte")) {
+            double chance = Math.random();
+            if (chance < this.probabiliteEmpoisonnement) {
+            cible.changerEtat("Empoisonné");
+            System.out.println(cible.nom + " est empoisonné !");
+            }
+        }
+
     }
 
     private int calculerDegats(Attaque attaque, Monstre cible) {
