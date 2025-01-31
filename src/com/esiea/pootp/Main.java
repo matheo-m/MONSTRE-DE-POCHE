@@ -19,8 +19,8 @@ public class Main {
         // --------------------------------------------------------------------------------------------
 
         // Choix des monstres pour chaque joueur
-        choisirMonstresTemporairement(joueur1, monstres);
-        choisirMonstresTemporairement(joueur2, monstres);
+        choisirMonstres(joueur1, monstres);
+        choisirMonstres(joueur2, monstres);
 
         // Ajout des attaques pour chaque monstre des joueurs
         ajouterAttaquesTemporairement(joueur1, attaques);
@@ -54,14 +54,6 @@ public class Main {
         }
     }
 
-    // je fais une copie de la liste de monstres pour ne pas modifier la liste
-    // originale
-    // pour que les deux joueurs puissent choisir dans la même liste de monstres
-    private static void choisirMonstresTemporairement(Joueur joueur, List<Monstre> monstres) {
-        List<Monstre> copieMonstres = new ArrayList<>(monstres);
-        choisirMonstres(joueur, copieMonstres);
-    }
-
     private static void ajouterAttaques(Joueur joueur, List<Attaque> attaques) {
         Scanner scanner = new Scanner(System.in);
         System.out.println(joueur.getNom() + ", choisissez les attaques de vos monstres :");
@@ -83,7 +75,6 @@ public class Main {
                 Attaque attaqueChoisie = attaques.get(choix);
                 if (attaqueChoisie.getType().equals(monstre.getType()) || attaqueChoisie.getType().equals("Normal")) {
                     monstre.ajouterAttaque(attaqueChoisie);
-                    // attaques.remove(choix); // pour ne pas choisir la même attaque
                 } else {
                     System.out.println("Attaque non compatible avec le type du monstre. Choisissez une autre attaque.");
                     i--; // pour choisir à nouveau une attaque
