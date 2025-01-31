@@ -233,15 +233,15 @@ public class Monstre {
         if ((typeAttaque.equals("Feu") && typeCible.equals("Eau")) ||
                 (typeAttaque.equals("Eau") && typeCible.equals("Foudre")) ||
                 (typeAttaque.equals("Foudre") && typeCible.equals("Terre")) ||
-                (typeAttaque.equals("Terre") && typeCible.equals("Nature")) ||
-                (typeAttaque.equals("Nature") && typeCible.equals("Feu"))) {
+                (typeAttaque.equals("Terre") && typeCible.equals("Plante")) ||
+                (typeAttaque.equals("Plante") && typeCible.equals("Feu"))) {
             return 0.5; // Faible contre
         }
         if ((typeAttaque.equals("Eau") && typeCible.equals("Feu")) ||
                 (typeAttaque.equals("Foudre") && typeCible.equals("Eau")) ||
                 (typeAttaque.equals("Terre") && typeCible.equals("Foudre")) ||
-                (typeAttaque.equals("Nature") && typeCible.equals("Terre")) ||
-                (typeAttaque.equals("Feu") && typeCible.equals("Nature"))) {
+                (typeAttaque.equals("Plante") && typeCible.equals("Terre")) ||
+                (typeAttaque.equals("Feu") && typeCible.equals("Plante"))) {
             return 2.0; // Fort contre
         }
         return 1.0; // Pas d'avantage
