@@ -1,4 +1,4 @@
-# Java-TP-MonstreDePoche
+# Java-TP-MonstreDePoche Mathéo Moussé
 ## Comment jouer au jeu
 
 ### Prérequis
