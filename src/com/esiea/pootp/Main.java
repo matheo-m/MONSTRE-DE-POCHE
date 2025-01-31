@@ -43,7 +43,7 @@ public class Main {
     private static void choisirMonstres(Joueur joueur, List<Monstre> monstres) {
         Scanner scanner = new Scanner(System.in);
         System.out.println(joueur.getNom() + ", choisissez vos monstres :");
-        for (int i = 0; i < 2; i++) { // chaque joueur choisit 2 monstres
+        for (int i = 0; i < 3; i++) { // chaque joueur choisit 3 monstres
             System.out.println("Choisissez le monstre " + (i + 1) + " :");
             for (int j = 0; j < monstres.size(); j++) {
                 System.out.println((j + 1) + ". " + monstres.get(j).getNom() + " (" + monstres.get(j).getType() + ")");
