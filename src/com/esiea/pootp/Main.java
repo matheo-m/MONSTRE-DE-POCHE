@@ -13,9 +13,9 @@ public class Main {
         // Chargement des monstres depuis le fichier
         // --------------------------------------------------------------------------------------------
         List<Monstre> monstres = ChargeurFichier
-                .chargerMonstres("C:/Users/matheo/Documents/A_Etude/ESIEA/3A/Java/Java-TP-MonstreDePoche/Monstres.txt");
+                .chargerMonstres("C:/Users/.../Monstres.txt");
         List<Attaque> attaques = ChargeurFichier
-                .chargerAttaques("C:/Users/matheo/Documents/A_Etude/ESIEA/3A/Java/Java-TP-MonstreDePoche/Attaques.txt");
+                .chargerAttaques("C:/Users/.../Attaques.txt");
         // --------------------------------------------------------------------------------------------
 
         // Choix des monstres pour chaque joueur
