@@ -10,9 +10,9 @@ Avant de lancer le jeu, assurez-vous d'avoir les fichiers `Monstres.txt` et `Att
     - Modifiez les chemins des fichiers `Monstres.txt` et `Attaques.txt` dans les lignes suivantes :
       ```java
       List<Monstre> monstres = ChargeurFichier
-                 .chargerMonstres("C:/Users/.../Java/Java-TP-MonstreDePoche/Monstres.txt");
+                 .chargerMonstres("C:/Users/.../Monstres.txt");
       List<Attaque> attaques = ChargeurFichier
-                 .chargerAttaques("C:/Users/.../Java/Java-TP-MonstreDePoche/Attaques.txt");
+                 .chargerAttaques("C:/Users/.../Attaques.txt");
       ```
     - Remplacez les chemins par les chemins absolus où se trouvent vos fichiers `Monstres.txt` et `Attaques.txt`.
 
