@@ -1,4 +1,4 @@
-# Java-TP-MonstreDePoche Mathéo Moussé
+# Monstre de Poche
 ## Comment jouer au jeu
 
 ### **Lancer le jeu**:
