@@ -13,9 +13,9 @@ public class Main {
         // Chargement des monstres depuis le fichier
         // --------------------------------------------------------------------------------------------
         List<Monstre> monstres = ChargeurFichier
-                .chargerMonstres("C:/Users/.../Monstres.txt");
+                .chargerMonstres("Monstres.txt");
         List<Attaque> attaques = ChargeurFichier
-                .chargerAttaques("C:/Users/.../Attaques.txt");
+                .chargerAttaques("Attaques.txt");
         // --------------------------------------------------------------------------------------------
 
         // Choix des monstres pour chaque joueur
