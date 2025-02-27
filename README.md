@@ -1,22 +1,7 @@
 # Java-TP-MonstreDePoche Mathéo Moussé
 ## Comment jouer au jeu
 
-### Prérequis
-Avant de lancer le jeu, assurez-vous d'avoir les fichiers `Monstres.txt` et `Attaques.txt` disponibles sur votre système. Vous devrez modifier le chemin absolu de ces fichiers dans le code source avant de lancer le jeu.
-
-### Étapes pour jouer
-1. **Modifier les chemins des fichiers**:
-    - Ouvrez le fichier `Main.java`.
-    - Modifiez les chemins des fichiers `Monstres.txt` et `Attaques.txt` dans les lignes suivantes :
-      ```java
-      List<Monstre> monstres = ChargeurFichier
-                 .chargerMonstres("C:/Users/.../Monstres.txt");
-      List<Attaque> attaques = ChargeurFichier
-                 .chargerAttaques("C:/Users/.../Attaques.txt");
-      ```
-    - Remplacez les chemins par les chemins absolus où se trouvent vos fichiers `Monstres.txt` et `Attaques.txt`.
-
-2. **Lancer le jeu**:
+### **Lancer le jeu**:
     - Exécutez la classe `Main` pour démarrer le jeu.
     - Suivez les instructions à l'écran pour choisir vos monstres et leurs attaques.
 
